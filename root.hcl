@@ -4,7 +4,7 @@ remote_state {
   config = {
     bucket         = "xenium-tf-state"
     key            = "${path_relative_to_include()}/terraform.tfstate"
-    region         = "ap-southeast-2"
+    region         = local.region
     encrypt        = true
     # dynamodb_table = "terraform-locks"
   }
@@ -58,8 +58,19 @@ terraform {
 EOF
 }
 
+locals {
+  region      = "ap-southeast-2"
+  company_name = "xenium"
+
+}
+
 # Inputs that are common to all environments
 inputs = {
-  company_name = "xenium"
   aws_region   = "ap-southeast-2"
+  company_name = "xenium"
+  default_tags = { # A common default tags pattern
+    Company     = "xenium"
+    ManagedBy   = "Terragrunt"
+    Repository  = "infrastructure-live"
+  }
 }

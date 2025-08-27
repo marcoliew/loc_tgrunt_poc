@@ -6,7 +6,7 @@ include "root" {
 locals {
   env_config = read_terragrunt_config(find_in_parent_folders(""))
   root_config = read_terragrunt_config(find_in_parent_folders("root.hcl"))
-  vpc_name = "${local.root_config.inputs.company_name}-${local.env_config.inputs.environment}-vpc"
+  #vpc_name = "${local.root_config.inputs.company_name}-${local.env_config.inputs.environment}-vpc"
 }
 
 
@@ -18,7 +18,7 @@ locals {
 # 3. Merge module-specific inputs with the already-merged environment inputs
 inputs = {
   cidr = "19.0.0.0/16"
-  name = local.vpc_name
+  name = "${local.root_config.inputs.company_name}-${local.env_config.inputs.environment}-vpc"
 }
 
 terraform {
