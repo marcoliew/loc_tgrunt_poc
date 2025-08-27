@@ -212,3 +212,15 @@ terraform.rc
 #!! ERROR: ubuntu is undefined. Use list command to see defined gitignore types !!#
 
 # End of https://www.toptal.com/developers/gitignore/api/python,terraform,ubuntu
+
+# Terragrunt specific ignores
+.terragrunt-cache/
+.terragrunt-stack/
+
+# Terraform specific ignores
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+terraform.rc
+.terraformrc
