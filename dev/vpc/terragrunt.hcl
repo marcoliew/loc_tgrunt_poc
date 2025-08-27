@@ -4,7 +4,7 @@ include "root" {
 
 # Read the env config for its inputs
 locals {
-  env_config = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  env_config = read_terragrunt_config(find_in_parent_folders(""))
   root_config = read_terragrunt_config(find_in_parent_folders("root.hcl"))
   vpc_name = "${local.root_config.inputs.company_name}-${local.env_config.inputs.environment}-vpc"
 }
